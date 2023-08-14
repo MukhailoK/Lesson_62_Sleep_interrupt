@@ -33,21 +33,18 @@ public class Main {
 
     //2
     public static String reader(String fileName) {
-        List<String> strings = new ArrayList<>();
+        String res = "";
         try {
             BufferedReader bf = new BufferedReader(new FileReader(fileName));
             String str;
             while ((str = bf.readLine()) != null) {
-                strings.add(str);
+                if (res.length() < str.length()) {
+                    res = str;
+                }
             }
+            return res;
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        String res = "";
-        for (String s : strings) {
-            if (s.length() > res.length()) {
-                res = s;
-            }
         }
         return res;
     }
